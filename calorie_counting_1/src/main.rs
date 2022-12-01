@@ -20,12 +20,14 @@ fn main() {
         elf_totals.push(elf_total);
     }
 
-    let mut max_elf_total = 0;
-    for elf_total in elf_totals {
-        if elf_total > max_elf_total {
-            max_elf_total = elf_total;
-        }
+    elf_totals.sort_unstable();
+    elf_totals.reverse();
+
+    let mut top_3 = Vec::new();
+    for i in 0..3 {
+        top_3.push(elf_totals[i]);
     }
 
-    println!("Max elf total: {}", max_elf_total);
+    println!("Sum of top 3: {}", top_3.iter().sum::<i32>());
+
 }
